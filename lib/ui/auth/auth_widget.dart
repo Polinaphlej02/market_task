@@ -26,6 +26,7 @@ class _AuthWidgetState extends State<AuthWidget> {
             ),
              const SizedBox(height: 20),
              ElevatedButton(onPressed: () => context.go('/profile'), child: const Text("To the second screen")),
+             TextButton(onPressed: () {}, child: Text("Sign up")),
           ],
         );
   }
