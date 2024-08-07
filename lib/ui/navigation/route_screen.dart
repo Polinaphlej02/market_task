@@ -10,7 +10,14 @@ class RouteScreen  extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: BottomNavigationBar(items: _buidBottomNavigationItems),
+      bottomNavigationBar: BottomNavigationBar(
+        items: _buidBottomNavigationItems,
+        currentIndex: navigationShell.currentIndex,
+        onTap: (index) => navigationShell.goBranch(
+          index,
+          initialLocation: index == navigationShell.currentIndex
+        ),
+        ),
     );
   }
 }
