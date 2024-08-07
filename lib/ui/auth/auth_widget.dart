@@ -6,28 +6,71 @@ class AuthWidget extends StatefulWidget {
 
   @override
   State<AuthWidget> createState() => _AuthWidgetState();
+
+  
 }
 
 class _AuthWidgetState extends State<AuthWidget> {
+
+  final _formKey = GlobalKey<FormState>();
+  final loginController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    loginController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+  
+
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const TextField(
-              decoration: InputDecoration(
-                labelText: "Email",
+    return Form(
+      key: _formKey,
+      child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                controller: loginController,
+                validator: (value){
+                  if ( value == null || value.isEmpty) {
+                    return "Please, enter your email";
+                  }
+                  else {
+                    return null;
+                  }
+                },
+                decoration: const InputDecoration(
+                  labelText: "Email",
+                ),
               ),
-            ),
-            const TextField(
-              decoration: InputDecoration(
-                labelText: "Password",
+              TextFormField(
+                obscureText: true,
+                controller: passwordController,
+                validator: (value){
+                  if ( value == null || value.isEmpty) {
+                    return "Please, enter your password";
+                  }
+                  else {
+                    return null;
+                  }
+                },
+                decoration: const InputDecoration(
+                  labelText: "Password",
+                ),
               ),
-            ),
-             const SizedBox(height: 20),
-             ElevatedButton(onPressed: () => context.go('/profile'), child: const Text("To the second screen")),
-             TextButton(onPressed: () {}, child: Text("Sign up")),
-          ],
-        );
+               const SizedBox(height: 20),
+               ElevatedButton(onPressed: () { 
+                  if (_formKey.currentState!.validate()) {
+                      context.go('/profile');
+                  }
+                }, 
+                child: const Text("To the second screen")),
+               TextButton(onPressed: () {}, child: const Text("Sign up")),
+            ],
+          ),
+    );
   }
 }
