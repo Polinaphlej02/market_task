@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:market_task/ui/auth/auth_widget.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -7,9 +7,17 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(onPressed: () => context.go('/profile'), child: Text("To the second screen")),
+      appBar: AppBar(
+        title: const Text("Log to"),
+        centerTitle: true,
       ),
+      body: Center(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          child: const AuthWidget(),
+        ),
+      )
     );
   }
 }
+
