@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:market_task/provider/card_provider.dart';
 import 'package:market_task/provider/favorite_provider.dart';
 
 class FavoriteScreen extends ConsumerStatefulWidget {
@@ -15,7 +14,6 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     final favoriteCards = ref.watch(favoriteNotifier);
-    final cardData = ref.watch(cardDataProvider);
 
     return Scaffold(
       body: Container(
