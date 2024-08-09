@@ -9,6 +9,10 @@ class RouteScreen  extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Market", style: TextStyle(fontSize: 33, fontWeight: FontWeight.w400),),
+        centerTitle: true,
+      ),
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
         items: _buidBottomNavigationItems,
@@ -29,7 +33,7 @@ List<BottomNavigationBarItem> get _buidBottomNavigationItems => [
     ),
   const BottomNavigationBarItem(
     icon: Icon(Icons.shopping_cart),
-    label: 'Prodacts'
+    label: 'Products'
     ),
   const BottomNavigationBarItem(
     icon: Icon(Icons.favorite),

@@ -14,16 +14,38 @@ class CardsScreen extends StatelessWidget {
         itemBuilder: (context, index) {
       
           Map item = cardsData[index];
-          return Card(
-            child: Container(
-              child: Column(
-                children: [
-                  Text(item['name']),
-                  item['picture'],
-                  Text('description'),
-                ],
-              ),
-            )
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 20, left: 30, right: 30),
+            child: Card(
+              child: Container(
+                child: Column(
+                  children: [
+                    Text(item['name'], style: TextStyle(fontSize: 30),),
+                    Container(
+                      height: 250,
+                      width: 300,
+                      child: Image.asset(item['picture'],)
+                      ),
+                    Padding(
+                      child: Text(item['description'], style: TextStyle(fontSize: 20),),
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      width: 150,
+                      child: ElevatedButton(
+                        onPressed: () {}, 
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                          Text("ADD TO "),
+                          Icon(Icons.favorite),
+                        ],)),
+                    )
+                  ],
+                ),
+              )
+            ),
           );
         }
         ),
