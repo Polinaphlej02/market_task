@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:market_task/data/users_data.dart';
 
 class AuthWidget extends StatefulWidget {
   const AuthWidget({super.key});
@@ -15,6 +18,7 @@ class _AuthWidgetState extends State<AuthWidget> {
   final _formKey = GlobalKey<FormState>();
   final loginController = TextEditingController();
   final passwordController = TextEditingController();
+  bool isRight = false;
 
   @override
   void dispose() {
@@ -63,8 +67,8 @@ class _AuthWidgetState extends State<AuthWidget> {
               ),
                const SizedBox(height: 20),
                ElevatedButton(onPressed: () { 
-                  if (_formKey.currentState!.validate()) {
-                      context.go('/profile');
+                  if (_formKey.currentState!.validate() & loginChecking(loginController.text) & passwordCheking(loginController.text, passwordController.text)) {
+                      context.go('/profile');  
                   }
                 }, 
                 child: const Text("To the second screen")),

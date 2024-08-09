@@ -7,7 +7,7 @@ import '../cards/cards_screen.dart';
 import 'route_screen.dart';
 
 final router = GoRouter(
-  initialLocation: '/auth',
+  initialLocation: '/profile',
   routes: [
     // BottomNavigationBar
     StatefulShellRoute.indexedStack(
@@ -22,14 +22,7 @@ final router = GoRouter(
             ),
           ],
         ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/favorites',
-              builder: (context, state) => const FavoriteScreen(),
-            ),
-          ],
-        ),
+        
         StatefulShellBranch(
           routes: [
             GoRoute(
@@ -38,7 +31,16 @@ final router = GoRouter(
             ),
           ],
         ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/favorites',
+              builder: (context, state) => const FavoriteScreen(),
+            ),
+          ],
+        ),
       ],
+      
     ),
     GoRoute(
               path: '/auth',
