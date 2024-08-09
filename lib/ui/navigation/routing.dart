@@ -7,7 +7,7 @@ import '../cards/cards_screen.dart';
 import 'route_screen.dart';
 
 final router = GoRouter(
-  initialLocation: '/auth',
+  initialLocation: '/cards',
   routes: [
     // BottomNavigationBar
     StatefulShellRoute.indexedStack(
