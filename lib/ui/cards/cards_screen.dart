@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:market_task/data/cards_data.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:market_task/provider/card_provider.dart';
 
-class CardsScreen extends StatelessWidget {
+class CardsScreen extends ConsumerWidget {
   const CardsScreen({super.key});
 
-
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cardData = ref.watch(cardDataProvider);
+
     return Scaffold(
       body: ListView.builder(
         itemCount: cardsData.length,
         itemBuilder: (context, index) {
-      
-          Map item = cardsData[index];
+    
           return Padding(
             padding: const EdgeInsets.only(bottom: 20, left: 30, right: 30),
             child: Card(
               child: Container(
                 child: Column(
                   children: [
-                    Text(item['name'], style: TextStyle(fontSize: 30),),
+                    Text(cardData[index].name, style: TextStyle(fontSize: 30),),
                     Container(
                       height: 250,
                       width: 300,
-                      child: Image.asset(item['picture'],)
+                      child: Image.asset(cardData[index].image,)
                       ),
                     Padding(
-                      child: Text(item['description'], style: TextStyle(fontSize: 20),),
+                      child: Text(cardData[index].description, style: TextStyle(fontSize: 20),),
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       ),
                     Container(
