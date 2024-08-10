@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:market_task/ui/auth/auth_screen.dart';
+import 'package:market_task/ui/auth/register_screen.dart';
 import 'package:market_task/ui/favorite/favorite_screen.dart';
 import 'package:market_task/ui/profile/profile_screen.dart';
 
@@ -45,6 +46,10 @@ final router = GoRouter(
     GoRoute(
               path: '/auth',
               builder: (context, state) => const AuthScreen(),
+            ),
+    GoRoute(
+              path: '/register',
+              builder: (context, state) => const RegisterScreen(),
             ),
   ],
 );

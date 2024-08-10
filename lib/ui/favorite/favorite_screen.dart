@@ -16,24 +16,22 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
     final favoriteCards = ref.watch(favoriteNotifier);
 
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: favoriteCards.map((card) {
-            return Container(
-              padding: EdgeInsets.all(30),
-              child: Row(
-                children: [
-                  Image.asset(card.image, height: 80,),
-                  const SizedBox(width: 20,),
-                  Expanded(child: Text(card.name, style: TextStyle(fontSize: 22),)),
-                  IconButton(onPressed: () {
-                    ref.read(favoriteNotifier.notifier).removeCard(card);
-                  }, icon: Icon(Icons.delete, size: 30,), ),
-                ],
-              ),
-            );
-          }).toList()
-          )
+      body: Column(
+        children: favoriteCards.map((card) {
+          return Container(
+            padding: EdgeInsets.all(30),
+            child: Row(
+              children: [
+                Image.asset(card.image, height: 80,),
+                const SizedBox(width: 20,),
+                Expanded(child: Text(card.name, style: const TextStyle(fontSize: 22),)),
+                IconButton(onPressed: () {
+                  ref.read(favoriteNotifier.notifier).removeCard(card);
+                }, icon: const Icon(Icons.delete, size: 30,), ),
+              ],
+            ),
+          );
+        }).toList()
         ),
     );
   }

@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:market_task/provider/user_provider.dart';
 
-class AuthWidget extends StatefulWidget {
-  const AuthWidget({super.key});
+class RegisterWidget extends StatefulWidget {
+  const RegisterWidget({super.key});
 
   @override
-  State<AuthWidget> createState() => _AuthWidgetState();
+  State<RegisterWidget> createState() => _RegisterWidgetState();
 
   
 }
 
-class _AuthWidgetState extends State<AuthWidget> {
+class _RegisterWidgetState extends State<RegisterWidget> {
 
   final _formKey = GlobalKey<FormState>();
   final loginController = TextEditingController();
   final passwordController = TextEditingController();
+  final nameController = TextEditingController();
+
   bool isRight = false;
 
   @override
@@ -34,6 +36,20 @@ class _AuthWidgetState extends State<AuthWidget> {
       child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              TextFormField(
+                controller: nameController,
+                validator: (value){
+                  if ( value == null || value.isEmpty) {
+                    return "Please, enter your name";
+                  }
+                  else {
+                    return null;
+                  }
+                },
+                decoration: const InputDecoration(
+                  labelText: "Name",
+                ),
+              ),
               TextFormField(
                 controller: loginController,
                 validator: (value){
@@ -65,14 +81,11 @@ class _AuthWidgetState extends State<AuthWidget> {
               ),
                const SizedBox(height: 20),
                ElevatedButton(onPressed: () { 
-                  if (_formKey.currentState!.validate() & authChecking(loginController.text, passwordController.text)) {
-                      context.go('/profile');  
+                  if (_formKey.currentState!.validate()) {
+                      context.go('/auth');  
                   }
                 }, 
-                child: const Text("To the second screen")),
-               TextButton(onPressed: () {
-                  context.go('/register'); 
-               }, child: const Text("Sign up")),
+                child: const Text("Register")),
             ],
           ),
     );

@@ -8,12 +8,12 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sign in"),
+        title: const Text("Welcome to  the market"),
         centerTitle: true,
       ),
       body: Center(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: const AuthWidget(),
         ),
       )

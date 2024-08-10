@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -15,7 +16,9 @@ class ProfileScreen extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: ElevatedButton(onPressed: () {}, child: Container(
+        floatingActionButton: ElevatedButton(onPressed: () {
+           context.go('/auth');
+        }, child: Container(
           height: 55,
           child: const Column(
             children: [

@@ -10,7 +10,7 @@ class RouteScreen  extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Market", style: TextStyle(fontSize: 33, fontWeight: FontWeight.w400),),
+        title: const Text("Our market", style: TextStyle(fontSize: 32, fontWeight: FontWeight.w400),),
         centerTitle: true,
       ),
       body: navigationShell,
