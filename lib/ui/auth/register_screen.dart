@@ -14,7 +14,7 @@ class RegisterScreen extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(onPressed: (){
           context.go('/auth');
-        }, icon: Icon(Icons.arrow_back_outlined)),
+        }, icon: const Icon(Icons.arrow_back_outlined)),
       ),
       body: Center(
         child: Container(

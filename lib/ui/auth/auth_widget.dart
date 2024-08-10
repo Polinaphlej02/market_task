@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:market_task/provider/user_provider.dart';
 
-class AuthWidget extends StatefulWidget {
+class AuthWidget extends ConsumerStatefulWidget {
   const AuthWidget({super.key});
 
   @override
-  State<AuthWidget> createState() => _AuthWidgetState();
+  ConsumerState<AuthWidget> createState() => _AuthWidgetState();
 
   
 }
 
-class _AuthWidgetState extends State<AuthWidget> {
+class _AuthWidgetState extends ConsumerState<AuthWidget> {
 
   final _formKey = GlobalKey<FormState>();
   final loginController = TextEditingController();
@@ -29,6 +30,8 @@ class _AuthWidgetState extends State<AuthWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Form(
       key: _formKey,
       child: Column(
@@ -65,7 +68,7 @@ class _AuthWidgetState extends State<AuthWidget> {
               ),
                const SizedBox(height: 20),
                ElevatedButton(onPressed: () { 
-                  if (_formKey.currentState!.validate() & authChecking(loginController.text, passwordController.text)) {
+                  if (_formKey.currentState!.validate() & ref.read(userNotifier.notifier).checkUser(loginController.text, passwordController.text)) {
                       context.go('/profile');  
                   }
                 }, 

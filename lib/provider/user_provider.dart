@@ -1,27 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:market_task/models/user_model.dart';
 
-List<UserModel> userData = [
-  UserModel(email: "heloo@gmail.com", name: "Nancy", password: "1111"),
-  UserModel(email: "aaa@gmail.com", name: "Petr", password: "2222"),
-];
-
-final userDataProvider = Provider((ref) {
-  return userData;
-});
-
-bool authChecking(String login, String password) {
-  for (UserModel user in userData) {
-    if (user.email == login && user.password == password) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  throw Exception("Null val");
-}
-
-
 
 
 // bool loginChecking(String login) => usersData.containsKey(login);
@@ -33,3 +12,38 @@ bool authChecking(String login, String password) {
 //   }
 // }
 
+class UserNotifier extends Notifier<Set<UserModel>> {
+  
+  @override
+  Set<UserModel> build() {
+    return {
+    };
+  }
+
+  void addUser (UserModel user) {
+    if (!state.contains(user)) {
+      state = {...state, user};
+    }
+  }
+
+  bool checkUser(String login, String password) {
+    for (UserModel user in state) {
+      if (user.email == login && user.password == password){
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return false;
+  }
+
+ 
+}
+
+final userNotifier = NotifierProvider<UserNotifier, Set<UserModel>>((){
+  return UserNotifier();
+});
+
+final userNameProvider = Provider<String>((ref) {
+  return "";
+});

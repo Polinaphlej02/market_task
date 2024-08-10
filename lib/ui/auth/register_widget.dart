@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:market_task/models/user_model.dart';
 import 'package:market_task/provider/user_provider.dart';
 
-class RegisterWidget extends StatefulWidget {
+class RegisterWidget extends ConsumerStatefulWidget {
   const RegisterWidget({super.key});
 
   @override
-  State<RegisterWidget> createState() => _RegisterWidgetState();
+  ConsumerState<RegisterWidget> createState() => _RegisterWidgetState();
 
   
 }
 
-class _RegisterWidgetState extends State<RegisterWidget> {
+class _RegisterWidgetState extends ConsumerState<RegisterWidget> {
 
   final _formKey = GlobalKey<FormState>();
   final loginController = TextEditingController();
@@ -27,10 +29,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     super.dispose();
   }
   
-
-
   @override
   Widget build(BuildContext context) {
+
     return Form(
       key: _formKey,
       child: Column(
@@ -82,6 +83,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                const SizedBox(height: 20),
                ElevatedButton(onPressed: () { 
                   if (_formKey.currentState!.validate()) {
+                      ref.read(userNotifier.notifier).addUser(UserModel(email: loginController.text, name: nameController.text, password: passwordController.text));
                       context.go('/auth');  
                   }
                 }, 
