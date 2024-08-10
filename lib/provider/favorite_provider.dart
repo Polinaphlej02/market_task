@@ -22,6 +22,10 @@ class FavoriteNotifier extends Notifier<Set<CardsModel>> {
     }
   }
 
+  void removeAllCards() {
+    state.clear();
+  }
+
 }
 
 final favoriteNotifier = NotifierProvider<FavoriteNotifier, Set<CardsModel>>((){

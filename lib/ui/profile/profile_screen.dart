@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:market_task/provider/favorite_provider.dart';
 import 'package:market_task/provider/user_provider.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Center(
         child: Column(
@@ -19,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             Consumer(
               builder: ((context, ref, child) {
-                final userName = ref.watch(userNameProvider) ?? '';
+                final userName = ref.watch(userNameProvider);
                 return Text(
                   userName,
                   style: const TextStyle(fontSize: 30),
@@ -31,6 +32,7 @@ class ProfileScreen extends StatelessWidget {
       ),
       floatingActionButton: ElevatedButton(
           onPressed: () {
+            ref.read(favoriteNotifier.notifier).removeAllCards();
             context.go('/auth');
           },
           child: const SizedBox(
