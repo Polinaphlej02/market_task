@@ -69,6 +69,7 @@ class _AuthWidgetState extends ConsumerState<AuthWidget> {
                const SizedBox(height: 20),
                ElevatedButton(onPressed: () { 
                   if (_formKey.currentState!.validate() & ref.read(userNotifier.notifier).checkUser(loginController.text, passwordController.text)) {
+                      ref.read(userNameProvider.notifier).update((state) => ref.read(userNotifier.notifier).userName(loginController.text).toString());
                       context.go('/profile');  
                   }
                 }, 

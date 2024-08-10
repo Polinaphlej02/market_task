@@ -19,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             Consumer(
               builder: ((context, ref, child) {
-                final userName = ref.watch(userNameProvider);
+                final userName = ref.watch(userNameProvider) ?? '';
                 return Text(
                   userName,
                   style: const TextStyle(fontSize: 30),

@@ -22,7 +22,7 @@ class UserNotifier extends Notifier<Set<UserModel>> {
 
   void addUser (UserModel user) {
     if (!state.contains(user)) {
-      state = {...state, user};
+      state.add(user);
     }
   }
 
@@ -30,11 +30,18 @@ class UserNotifier extends Notifier<Set<UserModel>> {
     for (UserModel user in state) {
       if (user.email == login && user.password == password){
         return true;
-      } else {
-        return false;
       }
     }
     return false;
+  }
+
+  String? userName(String login) {
+    for (UserModel user in state) {
+      if (user.email == login) {
+        return user.name;
+      }
+    }
+    return null;
   }
 
  
@@ -44,6 +51,6 @@ final userNotifier = NotifierProvider<UserNotifier, Set<UserModel>>((){
   return UserNotifier();
 });
 
-final userNameProvider = Provider<String>((ref) {
-  return "";
+final userNameProvider = StateProvider<String>((ref) {
+  return '';
 });
