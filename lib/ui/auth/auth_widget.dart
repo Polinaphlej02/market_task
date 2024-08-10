@@ -72,10 +72,12 @@ class _AuthWidgetState extends ConsumerState<AuthWidget> {
                       context.go('/profile');  
                   }
                 }, 
-                child: const Text("To the second screen")),
+                child: const Text("Sign in", style: TextStyle(fontSize: 18),)),
                TextButton(onPressed: () {
                   context.go('/register'); 
-               }, child: const Text("Sign up")),
+               }, child: const Text("Sign up", style: TextStyle(
+                  decoration: TextDecoration.underline,
+               ),), ),
             ],
           ),
     );
