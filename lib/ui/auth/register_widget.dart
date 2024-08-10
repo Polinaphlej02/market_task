@@ -57,6 +57,12 @@ class _RegisterWidgetState extends ConsumerState<RegisterWidget> {
                   if ( value == null || value.isEmpty) {
                     return "Please, enter your email";
                   }
+                  else if (!value.contains("@")) {
+                    return "Email entered incorrectly";
+                  }
+                  else if (ref.read(userNotifier.notifier).checkUserLogin(value)) {
+                    return "A user with your email has already registered";
+                  }
                   else {
                     return null;
                   }

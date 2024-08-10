@@ -2,16 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:market_task/models/user_model.dart';
 
 
-
-// bool loginChecking(String login) => usersData.containsKey(login);
-// bool passwordCheking(String login, String pass) {
-//   if (usersData[login]?['password'] == pass) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-
 class UserNotifier extends Notifier<Set<UserModel>> {
   
   @override
@@ -42,6 +32,15 @@ class UserNotifier extends Notifier<Set<UserModel>> {
       }
     }
     return null;
+  }
+
+  bool checkUserLogin(String login) {
+    for (UserModel user in state) {
+      if (user.email == login){
+        return true;
+      }
+    }
+    return false;
   }
 
  

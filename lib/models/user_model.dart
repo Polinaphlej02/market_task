@@ -4,4 +4,6 @@ class UserModel {
   final String password;
 
   const UserModel({required this.email, required this.name, required this.password});
+
+  get option => null;
 }
