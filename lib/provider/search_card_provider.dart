@@ -15,7 +15,7 @@ class SearchCardNotifier extends Notifier<List<CardsModel>> {
     } else {
       state = cardsData
           .where((card) =>
-              card.name.toLowerCase().contains(cardName.toLowerCase()))
+              card.name.toLowerCase().startsWith(cardName.toLowerCase()))
           .toList();
     }
   }

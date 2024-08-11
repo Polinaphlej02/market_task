@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:market_task/provider/card_provider.dart';
 import 'package:market_task/provider/favorite_provider.dart';
 import 'package:market_task/provider/search_card_provider.dart';
 
@@ -10,7 +9,6 @@ class CardsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cardData = ref.watch(cardDataProvider);
     final cardFavorite = ref.watch(favoriteNotifier);
     final cardSearch = ref.watch(searchNotifier);
 
@@ -45,7 +43,7 @@ class CardsScreen extends ConsumerWidget {
                             height: 250,
                             width: 300,
                             child: Image.asset(
-                              cardData[index].image,
+                              cardSearch[index].image,
                             )),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
