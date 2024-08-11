@@ -25,7 +25,6 @@ class CardsScreen extends ConsumerWidget {
                       ),
                     ),
             ),
-      const SizedBox(height: 20),
       Expanded(
         child: ListView.builder(
             itemCount: cardSearch.length,
