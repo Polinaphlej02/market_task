@@ -8,8 +8,6 @@ class AuthWidget extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<AuthWidget> createState() => _AuthWidgetState();
-
-  
 }
 
 class _AuthWidgetState extends ConsumerState<AuthWidget> {
@@ -17,7 +15,6 @@ class _AuthWidgetState extends ConsumerState<AuthWidget> {
   final _formKey = GlobalKey<FormState>();
   final loginController = TextEditingController();
   final passwordController = TextEditingController();
-  bool isRight = false;
 
   @override
   void dispose() {
@@ -28,8 +25,6 @@ class _AuthWidgetState extends ConsumerState<AuthWidget> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Form(
         key: _formKey,
         child: Column(

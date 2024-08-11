@@ -19,7 +19,7 @@ class _FavoriteScreenState extends ConsumerState<FavoriteScreen> {
       body: Column(
         children: favoriteCards.map((card) {
           return Container(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             child: Row(
               children: [
                 Image.asset(card.image, height: 80,),

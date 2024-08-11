@@ -9,8 +9,6 @@ class RegisterWidget extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<RegisterWidget> createState() => _RegisterWidgetState();
-
-  
 }
 
 class _RegisterWidgetState extends ConsumerState<RegisterWidget> {
@@ -26,12 +24,12 @@ class _RegisterWidgetState extends ConsumerState<RegisterWidget> {
   void dispose() {
     loginController.dispose();
     passwordController.dispose();
+    nameController.dispose();
     super.dispose();
   }
   
   @override
   Widget build(BuildContext context) {
-
     return Form(
       key: _formKey,
       child: Column(
